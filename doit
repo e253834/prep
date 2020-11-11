@@ -1,7 +1,9 @@
 #!/bin/bash
 
 apt update && apt upgrade -y
-apt install gnupg2 -y
+apt install -y build-essential dkms linux-headers-amd
+./VBoxLinuxAdditions.run
+sleep 10
 
 echo if \[ -d \"\$HOME/bin\" \] \; then >> ~/.profile2
 echo "  "PATH=\"\$HOME/bin:\$PATH\" >> ~/.profile2
@@ -43,10 +45,6 @@ echo "" >> /etc/network/interfaces
 echo iface enp0s8 inet dhcp >> /etc/network/interfaces
 
 passwd -d root && getent passwd {1000..1001} | awk -F: '{ system("userdel -r " $1) }'
-
-echo deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib > /etc/apt/sources.list.d/virtualbox.list
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
 
 update-grub2
 
