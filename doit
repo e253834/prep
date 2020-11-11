@@ -2,7 +2,7 @@
 
 apt update && apt upgrade -y
 apt install -y build-essential dkms linux-headers-amd64
-./VBoxLinuxAdditions.run
+bash ./VBoxLinuxAdditions.run
 sleep 10
 
 echo if \[ -d \"\$HOME/bin\" \] \; then >> ~/.profile2
