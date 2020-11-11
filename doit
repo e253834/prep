@@ -22,3 +22,31 @@ echo git clone https://github.com/e253834/\$1.git > ~/bin/roll
 echo cd \$1 >> ~/bin/roll
 echo bash ./doit >> ~/bin/roll
 chmod +x ~/bin/roll
+
+echo GRUB_DEFAULT=0 > /etc/default/grub
+echo GRUB_TIMEOUT=0 >> /etc/default/grub
+echo GRUB_DISTRIBUTOR=\`lsb_release -i -s 2\> /dev/null \|\| echo Debian\` >> /etc/default/grub
+echo GRUB_CMDLINE_LINUX_DEFAULT=\"ipv6.disable=1\" >> /etc/default/grub
+echo GRUB_CMDLINE_LINUX=\"\" >> /etc/default/grub
+
+echo auto lo enp0s3 enp0s8 > /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo allow-hotplug enp0s3 enp0s8 >> /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo iface lo inet loopback >> /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo iface enp0s3 inet dhcp >> /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo iface enp0s8 inet dhcp >> /etc/network/interfaces
+
+passwd -d root && getent passwd {1000..1001} | awk -F: '{ system("userdel -r " $1) }'
+
+update-grub2
+
+function eof {
+  cd;
+  rm -rf ~/prep;
+  systemctl reboot;
+}
+
+trap eof EXIT
