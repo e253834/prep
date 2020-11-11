@@ -43,6 +43,9 @@ echo iface enp0s3 inet dhcp >> /etc/network/interfaces
 echo "" >> /etc/network/interfaces
 echo iface enp0s8 inet dhcp >> /etc/network/interfaces
 
+grep -E "^deb " /etc/apt/sources.list > /etc/apt/sources2.list
+mv /etc/apt/sources2.list /etc/apt/sources.list
+
 passwd -d root && getent passwd {1000..1001} | awk -F: '{ system("userdel -r " $1) }'
 
 update-grub2
