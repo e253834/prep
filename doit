@@ -41,6 +41,10 @@ echo iface enp0s8 inet dhcp >> /etc/network/interfaces
 
 passwd -d root && getent passwd {1000..1001} | awk -F: '{ system("userdel -r " $1) }'
 
+echo deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib > /etc/apt/sources.list.d/virtualbox
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
+
 update-grub2
 
 function eof {
