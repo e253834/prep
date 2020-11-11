@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo if \[ -d \"\~/bin\" \] \; then >> ~/.profile2
-echo 	PATH=\"\~/bin:\$PATH\" >> ~/.profile2
+echo if \[ -d \"\$HOME/bin\" \] \; then >> ~/.profile2
+echo " 	"PATH=\"\$HOME/bin:\$PATH\" >> ~/.profile2
 echo fi >> ~/.profile2
 echo "" >> ~/.profile2
 grep -v "#" ~/.profile >> ~/.profile2
