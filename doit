@@ -24,10 +24,14 @@ echo alias la=\'ls \$LS_OPTIONS -lha\' >> ~/.bashrc
 echo alias grep=\'grep --color=auto\' >> ~/.bashrc
 
 mkdir ~/bin
+
 echo git clone https://github.com/e253834/\$1.git > ~/bin/roll
 echo cd \$1 >> ~/bin/roll
 echo bash ./doit >> ~/bin/roll
-chmod +x ~/bin/roll
+
+echo "ip a \| grep -v \"127.0.0.1\" \| grep inet\; echo \"\"\; uptime\; echo \"\"\; free -h\; echo \"\"\; df -h > ~/bin/mom
+
+chmod +x ~/bin/*
 
 echo GRUB_DEFAULT=0 > /etc/default/grub
 echo GRUB_TIMEOUT=0 >> /etc/default/grub
