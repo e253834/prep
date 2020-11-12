@@ -29,7 +29,7 @@ echo git clone https://github.com/e253834/\$1.git > ~/bin/roll
 echo cd \$1 >> ~/bin/roll
 echo bash ./doit >> ~/bin/roll
 
-echo "ip a \| grep -v \"127.0.0.1\" \| grep inet\; echo \"\"\; uptime\; echo \"\"\; free -h\; echo \"\"\; df -h > ~/bin/mom
+echo "ip a \| grep -v \"127.0.0.1\" \| grep inet\; echo \"\"\; uptime\; echo \"\"\; free -h\; echo \"\"\; df -h" > ~/bin/mom
 
 chmod +x ~/bin/*
 
